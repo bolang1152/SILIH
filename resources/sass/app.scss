@@ -6,3 +6,19 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+/* ============================================
+   CUSTOM CSS IMPORTS
+   ============================================ */
+
+// Import custom CSS files
+// Urutan penting: custom -> components -> plugins
+
+// 1. Custom styles (variables, base styles, utilities)
+@import '../css/custom.css';
+
+// 2. Component styles (reusable components)
+@import '../css/components.css';
+
+// 3. Plugin styles (external plugins)
+@import '../css/plugins.css';

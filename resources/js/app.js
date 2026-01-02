@@ -18,6 +18,18 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
+// Import custom utilities
+import './utils';
+
+// Import custom components (Vue components)
+import './components';
+
+// Import custom main JavaScript
+import './custom';
+
+// Import page-specific JavaScript
+import './pages';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

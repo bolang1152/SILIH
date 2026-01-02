@@ -1,0 +1,1051 @@
+/**
+ * Components CSS for SILIH Application
+ * 
+ * File ini berisi styling untuk komponen-komponen reusable.
+ * Gunakan class-prefix "silih-" untuk komponen kustom.
+ */
+
+/* ============================================
+   NAVBAR CUSTOMIZATIONS
+   ============================================ */
+
+.navbar-silih {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: 0.75rem 0;
+    transition: all var(--transition);
+}
+
+.navbar-silih .navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-silih .navbar-brand:hover {
+    color: var(--primary-dark);
+}
+
+.navbar-silih .nav-link {
+    font-weight: 500;
+    color: var(--gray-600);
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--radius);
+    transition: all var(--transition-fast);
+}
+
+.navbar-silih .nav-link:hover {
+    color: var(--primary-color);
+    background-color: var(--gray-100);
+}
+
+.navbar-silih .nav-link.active {
+    color: var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+.navbar-silih .dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    padding: 0.5rem;
+}
+
+.navbar-silih .dropdown-item {
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+
+.navbar-silih .dropdown-item:hover {
+    background-color: var(--gray-100);
+}
+
+/* ============================================
+   SIDEBAR STYLES
+   ============================================ */
+
+.sidebar {
+    width: 250px;
+    background-color: var(--white);
+    border-right: 1px solid var(--gray-200);
+    height: calc(100vh - 64px);
+    position: fixed;
+    left: 0;
+    top: 64px;
+    overflow-y: auto;
+    transition: transform var(--transition);
+    z-index: 100;
+}
+
+.sidebar-collapsed {
+    transform: translateX(-100%);
+}
+
+.sidebar-menu {
+    padding: 1rem 0;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--gray-600);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+    background-color: var(--gray-50);
+    color: var(--primary-color);
+}
+
+.sidebar-item.active {
+    background-color: rgba(37, 99, 235, 0.08);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.sidebar-item .icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar-section {
+    padding: 0.5rem 1.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    letter-spacing: 0.05em;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background-color: var(--gray-200);
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   CARD COMPONENTS
+   ============================================ */
+
+.silih-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.silih-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.silih-card-header {
+    padding: 1.25rem 1.5rem;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.silih-card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin: 0;
+}
+
+.silih-card-body {
+    padding: 1.5rem;
+}
+
+.silih-card-footer {
+    padding: 1rem 1.5rem;
+    background-color: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+}
+
+/* Stats Card */
+.stats-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.stats-card .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stats-card .icon-wrapper.primary {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+.stats-card .icon-wrapper.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--success-color);
+}
+
+.stats-card .icon-wrapper.warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+}
+
+.stats-card .icon-wrapper.danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+.stats-card .stats-content {
+    flex: 1;
+}
+
+.stats-card .stats-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.2;
+}
+
+.stats-card .stats-label {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-top: 0.25rem;
+}
+
+/* ============================================
+   BUTTON VARIANTS
+   ============================================ */
+
+.btn-silih {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.btn-silih:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.btn-silih:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-silih-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-silih-primary:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-silih-secondary {
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+}
+
+.btn-silih-secondary:hover:not(:disabled) {
+    background-color: var(--gray-200);
+}
+
+.btn-silih-success {
+    background-color: var(--success-color);
+    color: var(--white);
+}
+
+.btn-silih-success:hover:not(:disabled) {
+    background-color: #16a34a;
+}
+
+.btn-silih-danger {
+    background-color: var(--danger-color);
+    color: var(--white);
+}
+
+.btn-silih-danger:hover:not(:disabled) {
+    background-color: #dc2626;
+}
+
+.btn-silih-ghost {
+    background-color: transparent;
+    color: var(--gray-600);
+}
+
+.btn-silih-ghost:hover:not(:disabled) {
+    background-color: var(--gray-100);
+}
+
+.btn-silih-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: var(--radius);
+}
+
+.btn-silih-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+.btn-silih-lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+}
+
+/* ============================================
+   FORM COMPONENTS
+   ============================================ */
+
+.form-group-silih {
+    margin-bottom: 1.25rem;
+}
+
+.form-label-silih {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.form-label-silih .required {
+    color: var(--danger-color);
+}
+
+.form-control-silih {
+    display: block;
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--gray-800);
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.form-control-silih:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-control-silih::placeholder {
+    color: var(--gray-400);
+}
+
+.form-control-silih:disabled,
+.form-control-silih[readonly] {
+    background-color: var(--gray-100);
+    cursor: not-allowed;
+}
+
+.form-control-silih.is-valid {
+    border-color: var(--success-color);
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2322c55e'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+}
+
+.form-control-silih.is-invalid {
+    border-color: var(--danger-color);
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ef4444'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+}
+
+.form-text-silih {
+    margin-top: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.form-text-silih.error {
+    color: var(--danger-color);
+}
+
+.form-text-silih.success {
+    color: var(--success-color);
+}
+
+textarea.form-control-silih {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Select custom */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--gray-500);
+    pointer-events: none;
+}
+
+.select-wrapper select.form-control-silih {
+    appearance: none;
+    padding-right: 2.5rem;
+}
+
+/* Checkbox & Radio */
+.form-check-silih {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.form-check-silih input[type="checkbox"],
+.form-check-silih input[type="radio"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.form-check-silih input[type="checkbox"]:checked,
+.form-check-silih input[type="radio"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-silih input[type="checkbox"]:focus,
+.form-check-silih input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.form-check-silih .label-text {
+    font-size: 0.875rem;
+    color: var(--gray-700);
+}
+
+/* Input group */
+.input-group-silih {
+    display: flex;
+}
+
+.input-group-silih .input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-300);
+}
+
+.input-group-silih .input-group-text:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    border-right: none;
+}
+
+.input-group-silih .input-group-text:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    border-left: none;
+}
+
+.input-group-silih .form-control-silih {
+    flex: 1;
+    border-radius: 0;
+}
+
+.input-group-silih .form-control-silih:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.input-group-silih .form-control-silih:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* ============================================
+   TABLE COMPONENTS
+   ============================================ */
+
+.table-silih {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.table-silih thead th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--gray-700);
+    background-color: var(--gray-50);
+    border-bottom: 2px solid var(--gray-200);
+    white-space: nowrap;
+}
+
+.table-silih tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-700);
+    vertical-align: middle;
+}
+
+.table-silih tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+.table-silih tbody tr:hover {
+    background-color: var(--gray-50);
+}
+
+.table-silih tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-silih .actions-cell {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+/* Table with hover */
+.table-hover tbody tr:hover {
+    background-color: var(--gray-50);
+}
+
+/* Table bordered */
+.table-bordered {
+    border: 1px solid var(--gray-200);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid var(--gray-200);
+}
+
+/* Table striped */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--gray-50);
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+.pagination-silih {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination-silih .page-item {
+    display: flex;
+}
+
+.pagination-silih .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pagination-silih .page-link:hover {
+    background-color: var(--gray-100);
+    border-color: var(--gray-300);
+    color: var(--gray-800);
+}
+
+.pagination-silih .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+.pagination-silih .page-item.disabled .page-link {
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--gray-400);
+    cursor: not-allowed;
+}
+
+.pagination-silih .page-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   MODAL COMPONENTS
+   ============================================ */
+
+.modal-silih {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition);
+}
+
+.modal-silih.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-backdrop-silih {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition);
+}
+
+.modal-backdrop-silih.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content-silih {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform var(--transition);
+}
+
+.modal-silih.show .modal-content-silih {
+    transform: scale(1);
+}
+
+.modal-header-silih {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.modal-title-silih {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin: 0;
+}
+
+.modal-close-silih {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: var(--radius);
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.modal-close-silih:hover {
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+}
+
+.modal-body-silih {
+    padding: 1.5rem;
+    overflow-y: auto;
+    max-height: calc(90vh - 140px);
+}
+
+.modal-footer-silih {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--gray-200);
+    background-color: var(--gray-50);
+}
+
+/* Modal sizes */
+.modal-sm .modal-content-silih {
+    max-width: 400px;
+}
+
+.modal-lg .modal-content-silih {
+    max-width: 800px;
+}
+
+.modal-xl .modal-content-silih {
+    max-width: 1140px;
+}
+
+/* ============================================
+   ALERT COMPONENTS
+   ============================================ */
+
+.alert-silih {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.alert-silih .alert-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.alert-silih .alert-content {
+    flex: 1;
+}
+
+.alert-silih .alert-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.alert-silih .alert-dismissible {
+    display: flex;
+    align-self: flex-start;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+}
+
+.alert-silih .alert-dismissible:hover {
+    opacity: 1;
+}
+
+.alert-silih-primary {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+.alert-silih-success {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-silih-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.alert-silih-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert-silih-info {
+    background-color: #cffafe;
+    color: #0e7490;
+    border: 1px solid #a5f3fc;
+}
+
+/* ============================================
+   BADGE COMPONENTS
+   ============================================ */
+
+.badge-silih {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    line-height: 1;
+}
+
+.badge-silih-primary {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+.badge-silih-success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+}
+
+.badge-silih-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.badge-silih-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.badge-silih-secondary {
+    background-color: var(--gray-100);
+    color: var(--gray-600);
+}
+
+.badge-silih .badge-icon {
+    width: 12px;
+    height: 12px;
+}
+
+/* ============================================
+   LOADER / SPINNER
+   ============================================ */
+
+.loader-silih {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--gray-200);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loader-silih-sm {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+}
+
+.loader-silih-lg {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+}
+
+.loader-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader-text {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+    color: var(--gray-300);
+    margin-bottom: 1rem;
+}
+
+.empty-state-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.empty-state-description {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+}
+
+/* ============================================
+   DROPDOWN MENU
+   ============================================ */
+
+.dropdown-silih {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu-silih {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-100);
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-fast);
+    z-index: 1000;
+}
+
+.dropdown-silih.show .dropdown-menu-silih {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item-silih {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.dropdown-item-silih:hover {
+    background-color: var(--gray-100);
+    color: var(--gray-900);
+}
+
+.dropdown-item-silih.danger {
+    color: var(--danger-color);
+}
+
+.dropdown-item-silih.danger:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.dropdown-divider-silih {
+    height: 1px;
+    background-color: var(--gray-100);
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   TOOLTIP
+   ============================================ */
+
+.tooltip-silih {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text-silih {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--gray-800);
+    border-radius: var(--radius);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    margin-bottom: 0.5rem;
+    z-index: 1000;
+}
+
+.tooltip-silih:hover .tooltip-text-silih {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-text-silih::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--gray-800);
+}
+
