@@ -20,15 +20,24 @@
 ### ✅ Fase 4: Update Layout & Config
 - [x] Update resources/js/app.js (Import semua file JS)
 - [x] Update resources/sass/app.scss (Import semua file CSS)
-- [x] Update resources/views/layouts/app.blade.php (Load CSS & JS)
+- [x] Update resources/views/layouts/app.blade.php (Load CSS & JS + Navbar SILIH)
 
 ### ✅ Fase 5: Testing & Build
 - [x] Jalankan npm install --legacy-peer-deps
 - [x] Jalankan npm run build - **BERHASIL!**
-- [x] Verifikasi semua file ter-load dengan benar
+
+### ✅ Fase 6: Customize Halaman Utama
+- [x] Perbaiki route `/` ke HomeController (bukan welcome)
+- [x] Customize halaman Login dengan branding SILIH
+- [x] Customize halaman Register dengan branding SILIH
+- [x] Customize halaman Home (Dashboard) dengan navbar & footer SILIH
+- [x] Customize halaman Items Index
+- [x] Customize halaman Rooms Index
+- [x] Customize halaman Room Bookings Index
+- [x] Customize halaman Item Borrowings Index
 
 ---
-**Status:** ✅ SELESAI - Build Berhasil!
+**Status:** ✅ SELESAI - Semua Halaman SILIH Running!
 **Tanggal:** 2024
 
 

@@ -12,10 +12,8 @@ use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\UserController;
 
-// **Beranda** - Halaman utama aplikasi
-Route::get('/', function () {
-    return view('welcome'); // Halaman Beranda
-})->name('home');
+// **Beranda** - Halaman utama aplikasi (Dashboard SILIH)
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // **Autentikasi** (Login, Register, Logout)
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
