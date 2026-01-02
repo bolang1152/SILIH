@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone_number', 15)->nullable();  // Menambahkan kolom nomor telepon
+            $table->text('address')->nullable();  // Menambahkan kolom alamat
             $table->rememberToken();
             $table->timestamps();
         });

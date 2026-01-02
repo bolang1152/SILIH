@@ -1,22 +1,22 @@
 <?php
-// app/Models/User.php
 
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, MustVerifyEmailTrait;
 
     protected $fillable = [
         'name',
         'email',
         'password',
-        'phone_number', 
+        'phone_number',
         'address',
     ];
 
@@ -33,13 +33,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    // Relasi dengan ItemBorrowing
     public function itemBorrowings()
     {
         return $this->hasMany(ItemBorrowing::class);
     }
 
-    // Relasi dengan RoomBooking
     public function roomBookings()
     {
         return $this->hasMany(RoomBooking::class);

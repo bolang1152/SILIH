@@ -7,16 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\Unique;
 
 class VerificationController extends Controller
 {
     // Menampilkan halaman notifikasi verifikasi email
     public function show()
     {
-        if (Auth::User()->hasVerifiedEmail()) {
+        // Jika pengguna sudah terverifikasi, arahkan ke profil
+        if (Auth::users()->hasVerifiedEmail()) {
             return redirect()->route('profile');
         }
 
@@ -28,15 +26,20 @@ class VerificationController extends Controller
     {
         $user = Auth::user();
 
-        // Cek apakah email sudah terverifikasi
+        // Pastikan email sudah terverifikasi
         if ($user->hasVerifiedEmail()) {
             return redirect()->route('profile');
         }
 
-        if ($request->route('id') == $user->getKey() && hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification()))) {
+        // Verifikasi ID dan email dengan hash
+        if ($request->route('id') == $user->id && hash_equals((string) $request->route('hash'), sha1($user->email))) {
+            // Tandai email sebagai sudah terverifikasi
             $user->markEmailAsVerified();
-            event(new Verified($user)); // Menyebarkan event bahwa pengguna sudah diverifikasi
 
+            // Trigger event setelah email terverifikasi
+            event(new Verified($user));
+
+            // Redirect ke profil setelah verifikasi berhasil
             return redirect()->route('profile')->with('verified', true);
         }
 

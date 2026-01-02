@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\UserController;
 
 // **Beranda** - Halaman utama aplikasi
 Route::get('/', function () {
@@ -38,6 +39,7 @@ Route::post('email/resend', [VerificationController::class, 'resend'])->name('ve
 // **Profil Pengguna** - Menampilkan profil pengguna yang sudah login
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile')->middleware('auth');
 
+
 // **Peminjaman Barang** (CRUD)
 Route::resource('items', ItemController::class);
 
@@ -54,4 +56,20 @@ Route::resource('item_borrowings', ItemBorrowingController::class);
 Route::middleware(['auth', 'admin'])->group(function () {
     // Rute untuk admin dapat ditambahkan di sini
     // Contoh: Route::resource('admin', AdminController::class);
+
+});
+Route::middleware('auth')->group(function () {
+    Route::get('profile', [UserController::class, 'showProfile'])->name('profile')->middleware('verified');
+    Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
+    Route::post('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+        ->name('verification.verify')
+        ->middleware('auth');
+    Route::post('email/resend', [VerificationController::class, 'resend'])
+        ->name('verification.resend')
+        ->middleware('auth');
 });
