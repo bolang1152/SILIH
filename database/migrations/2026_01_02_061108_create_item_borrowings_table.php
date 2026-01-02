@@ -13,7 +13,7 @@ return new class extends Migration
     {
     Schema::create('item_borrowings', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');  // Relasi dengan tabel users
+        $table->foreignId('user_id')->constrained('user')->onDelete('cascade');  // Relasi dengan tabel user
         $table->foreignId('item_id')->constrained()->onDelete('cascade');  // Relasi dengan tabel items
         $table->timestamp('borrowed_at');  // Waktu peminjaman barang
         $table->timestamp('due_date')->nullable();  // Tanggal pengembalian yang diharapkan

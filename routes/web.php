@@ -31,14 +31,26 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkE
 Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+
 // **Email Verification** (Jika diperlukan)
-Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+Route::middleware('auth')->group(function () {
+    // Menampilkan halaman verifikasi email
+    Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+
+    // Rute untuk melakukan verifikasi email
+    Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+
+    // Rute untuk mengirim ulang email verifikasi
+    Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+});
+
 
 // **Profil Pengguna** - Menampilkan profil pengguna yang sudah login
-Route::get('profile', [UserController::class, 'showProfile'])->name('profile')->middleware('auth');
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
+    Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
+    Route::post('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
+});
 
 // **Peminjaman Barang** (CRUD)
 Route::resource('items', ItemController::class);
@@ -51,25 +63,3 @@ Route::resource('room_bookings', RoomBookingController::class);
 
 // **Item Borrowing** (CRUD untuk peminjaman barang)
 Route::resource('item_borrowings', ItemBorrowingController::class);
-
-// **Halaman Admin** (Jika diperlukan untuk admin tertentu)
-Route::middleware(['auth', 'admin'])->group(function () {
-    // Rute untuk admin dapat ditambahkan di sini
-    // Contoh: Route::resource('admin', AdminController::class);
-
-});
-Route::middleware('auth')->group(function () {
-    Route::get('profile', [UserController::class, 'showProfile'])->name('profile')->middleware('verified');
-    Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
-    Route::post('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-    Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
-        ->name('verification.verify')
-        ->middleware('auth');
-    Route::post('email/resend', [VerificationController::class, 'resend'])
-        ->name('verification.resend')
-        ->middleware('auth');
-});

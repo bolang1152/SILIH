@@ -29,12 +29,14 @@ class ItemController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'quantity' => 'required|integer|min:1',
+            'status' => 'required|in:available,borrowed,reserved',
         ]);
 
         Item::create([
             'name' => $request->name,
             'description' => $request->description,
             'quantity' => $request->quantity,
+            'status' => $request->status ?? 'available',
         ]);
 
         return redirect()->route('items.index')->with('success', 'Barang berhasil ditambahkan.');

@@ -16,6 +16,14 @@ class Room extends Model
     // Tentukan kolom yang bisa diisi
     protected $fillable = ['name', 'description', 'capacity', 'status'];
 
+    // Aturan casting untuk atribut
+    protected function casts(): array
+    {
+        return [
+            'status' => 'string',
+        ];
+    }
+
     // Jika ingin membuat relasi dengan model lain (misalnya RoomBooking)
     public function bookings()
     {

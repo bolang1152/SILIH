@@ -30,7 +30,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('items.index') }}">Items</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('rooms.index') }}">Rooms</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('room_bookings.index') }}">Room Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('item_borrowings.index') }}">Item Borrowings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

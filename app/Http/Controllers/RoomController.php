@@ -28,12 +28,14 @@ class RoomController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'capacity' => 'required|integer|min:1',
+            'status' => 'required|in:available,booked',
         ]);
 
         Room::create([
             'name' => $request->name,
             'description' => $request->description,
             'capacity' => $request->capacity,
+            'status' => $request->status ?? 'available',
         ]);
 
         return redirect()->route('rooms.index')->with('success', 'Ruangan berhasil ditambahkan.');

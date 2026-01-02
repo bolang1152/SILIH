@@ -16,6 +16,16 @@ class RoomBooking extends Model
     // Tentukan kolom yang bisa diisi
     protected $fillable = ['user_id', 'room_id', 'start_time', 'end_time', 'status'];
 
+    // Aturan casting untuk atribut
+    protected function casts(): array
+    {
+        return [
+            'start_time' => 'datetime',
+            'end_time' => 'datetime',
+            'status' => 'string',
+        ];
+    }
+
     // Relasi dengan model User dan Room
     public function user()
     {

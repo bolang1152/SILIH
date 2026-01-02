@@ -11,12 +11,9 @@ class UserController extends Controller
     // Menampilkan profil pengguna
     public function showProfile()
     {
-        // Pastikan pengguna sudah memverifikasi email
-        if (!Auth::users()->hasVerifiedEmail()) {
-            return redirect()->route('verification.notice');  // Mengarahkan ke halaman verifikasi jika email belum terverifikasi
-        }
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
 
-        $user = Auth::user();  // Ambil data pengguna yang sedang login
         return view('profile', compact('user'));  // Menampilkan halaman profil
     }
 
@@ -30,12 +27,13 @@ class UserController extends Controller
     // Mengupdate data pengguna
     public function updateProfile(Request $request)
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();  // Ambil data pengguna yang sedang login
 
         // Validasi data yang diterima
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,  // Mengecualikan email pengguna yang sedang diedit
+            'email' => 'required|string|email|max:255|unique:user,email,' . $user->id,  // Mengecualikan email pengguna yang sedang diedit
             'phone_number' => 'nullable|string|max:15',
             'address' => 'nullable|string',
         ]);

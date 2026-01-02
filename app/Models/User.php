@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use HasFactory, Notifiable, MustVerifyEmailTrait;
+    use HasFactory, Notifiable;
+
+    protected $table = 'user'; // Menggunakan tabel 'user' bukan 'users'
 
     protected $fillable = [
         'name',
@@ -33,11 +33,13 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    // Relasi dengan ItemBorrowing
     public function itemBorrowings()
     {
         return $this->hasMany(ItemBorrowing::class);
     }
 
+    // Relasi dengan RoomBooking
     public function roomBookings()
     {
         return $this->hasMany(RoomBooking::class);

@@ -16,6 +16,17 @@ class ItemBorrowing extends Model
     // Tentukan kolom yang bisa diisi
     protected $fillable = ['user_id', 'item_id', 'borrowed_at', 'due_date', 'returned_at', 'status'];
 
+    // Aturan casting untuk atribut
+    protected function casts(): array
+    {
+        return [
+            'borrowed_at' => 'datetime',
+            'due_date' => 'datetime',
+            'returned_at' => 'datetime',
+            'status' => 'string',
+        ];
+    }
+
     // Relasi dengan model User dan Item
     public function user()
     {

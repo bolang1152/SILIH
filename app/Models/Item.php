@@ -16,6 +16,14 @@ class Item extends Model
     // Tentukan kolom yang bisa diisi
     protected $fillable = ['name', 'description', 'quantity', 'status'];
 
+    // Aturan casting untuk atribut
+    protected function casts(): array
+    {
+        return [
+            'status' => 'string',
+        ];
+    }
+
     // Jika ingin membuat relasi dengan model lain (misalnya ItemBorrowing)
     public function borrowings()
     {

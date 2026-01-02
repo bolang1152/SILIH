@@ -25,7 +25,7 @@ class ItemBorrowingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'required|exists:user,id',
             'item_id' => 'required|exists:items,id',
             'borrowed_at' => 'required|date',
             'due_date' => 'required|date|after:borrowed_at',

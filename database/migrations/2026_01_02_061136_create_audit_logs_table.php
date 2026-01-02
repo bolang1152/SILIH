@@ -13,7 +13,7 @@ return new class extends Migration
     {
     Schema::create('audit_logs', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');  // Relasi dengan tabel users
+        $table->foreignId('user_id')->constrained('user')->onDelete('cascade');  // Relasi dengan tabel user
         $table->text('action');  // Deskripsi tindakan
         $table->foreignId('item_id')->nullable()->constrained()->onDelete('cascade');  // Relasi dengan tabel items
         $table->foreignId('room_id')->nullable()->constrained()->onDelete('cascade');  // Relasi dengan tabel rooms
