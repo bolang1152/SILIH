@@ -18,6 +18,7 @@ class User extends Authenticatable
         'password',
         'phone_number',
         'address',
+        'is_admin',
     ];
 
     protected $hidden = [
@@ -43,5 +44,11 @@ class User extends Authenticatable
     public function roomBookings()
     {
         return $this->hasMany(RoomBooking::class);
+    }
+
+    // Accessor untuk is_admin - konversi ke boolean
+    public function getIsAdminAttribute($value)
+    {
+        return (bool) $value;
     }
 }

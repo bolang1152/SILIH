@@ -145,6 +145,18 @@
                                             <span class="status-badge status-available">Disetujui</span>
                                         @elseif($booking->status == 'pending')
                                             <span class="status-badge status-warning">Menunggu</span>
+                                            @if(auth()->user()->is_admin)
+                                            <div class="action-buttons mt-2">
+                                                <form action="{{ route('admin.room_bookings.approve', $booking->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn-silih btn-silih-sm btn-silih-success">Setuju</button>
+                                                </form>
+                                                <form action="{{ route('admin.room_bookings.reject', $booking->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn-silih btn-silih-sm btn-silih-danger" onclick="return confirm('Tolak booking ini?')">Tolak</button>
+                                                </form>
+                                            </div>
+                                            @endif
                                         @elseif($booking->status == 'rejected')
                                             <span class="status-badge status-danger">Ditolak</span>
                                         @else

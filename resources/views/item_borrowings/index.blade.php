@@ -145,10 +145,30 @@
                                             <span class="status-badge status-available">Selesai</span>
                                         @elseif($borrowing->status == 'pending')
                                             <span class="status-badge status-warning">Menunggu</span>
+                                            @if(auth()->user()->is_admin)
+                                            <div class="action-buttons mt-2">
+                                                <form action="{{ route('admin.item_borrowings.approve', $borrowing->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn-silih btn-silih-sm btn-silih-success">Setuju</button>
+                                                </form>
+                                                <form action="{{ route('admin.item_borrowings.reject', $borrowing->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn-silih btn-silih-sm btn-silih-danger" onclick="return confirm('Tolak peminjaman ini?')">Tolak</button>
+                                                </form>
+                                            </div>
+                                            @endif
                                         @elseif($borrowing->status == 'overdue')
                                             <span class="status-badge status-danger">Terlambat</span>
                                         @elseif($borrowing->status == 'borrowed')
                                             <span class="status-badge status-info">Dipinjam</span>
+                                            @if(auth()->user()->is_admin)
+                                            <div class="action-buttons mt-2">
+                                                <form action="{{ route('admin.item_borrowings.return', $borrowing->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn-silih btn-silih-sm btn-silih-primary" onclick="return confirm('Konfirmasi pengembalian item?')">Kembalikan</button>
+                                                </form>
+                                            </div>
+                                            @endif
                                         @else
                                             <span class="status-badge">{{ $borrowing->status }}</span>
                                         @endif

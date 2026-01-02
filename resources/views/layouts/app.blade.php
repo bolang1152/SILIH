@@ -50,13 +50,15 @@
                 </button>
 
                 <div class="collapse navbar-collapse-silih" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav-silih me-auto">
                         @auth
+                            @if(Auth::user()->is_admin)
+                            <!-- ADMIN MENU -->
                             <li class="nav-item-silih">
-                                <a class="nav-link-silih {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
+                                <a class="nav-link-silih {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                                     <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
                                     </svg>
                                     Dashboard
                                 </a>
@@ -82,6 +84,32 @@
                                     <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
+                                    Bookings
+                                </a>
+                            </li>
+                            <li class="nav-item-silih">
+                                <a class="nav-link-silih {{ request()->routeIs('item_borrowings.*') ? 'active' : '' }}" href="{{ route('item_borrowings.index') }}">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                    </svg>
+                                    Borrowings
+                                </a>
+                            </li>
+                            @else
+                            <!-- USER MENU -->
+                            <li class="nav-item-silih">
+                                <a class="nav-link-silih {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" href="{{ route('user.dashboard') }}">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                    </svg>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item-silih">
+                                <a class="nav-link-silih {{ request()->routeIs('room_bookings.*') ? 'active' : '' }}" href="{{ route('room_bookings.index') }}">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
                                     Room Bookings
                                 </a>
                             </li>
@@ -90,9 +118,18 @@
                                     <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                                     </svg>
-                                    Item Borrowings
+                                    Peminjaman Saya
                                 </a>
                             </li>
+                            <li class="nav-item-silih">
+                                <a class="nav-link-silih {{ request()->routeIs('items.index') ? 'active' : '' }}" href="{{ route('items.index') }}">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                                    </svg>
+                                    Lihat Items
+                                </a>
+                            </li>
+                            @endif
                         @endauth
                     </ul>
 
